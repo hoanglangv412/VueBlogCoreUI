@@ -18,8 +18,8 @@ export default [
       },
       {
         _name: 'CSidebarNavItem',
-        name: 'Colors',
-        to: '/theme/colors',
+        name: 'Account',
+        to: '/account/index',
         icon: 'cil-drop'
       },
       {
