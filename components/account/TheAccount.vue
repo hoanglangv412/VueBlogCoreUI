@@ -5,16 +5,13 @@
         <h3>Accounts management</h3>
       </CCardHeader>
       <CCardBody class="text">
-        <CButton color="info" class="m-2 btn-add float-right mr-5" @click="CreateEditModal = true">
+        <CButton color="info" class="m-2 btn-add float-right mr-5" @click="infoModal = true">
           <!-- <nuxt-link to="/account/add" class="text-white d-block">Add +</nuxt-link> -->Add +
         </CButton>
-        <CModal title="Modal title" color="info" :show.sync="CreateEditModal">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <CModal title="Modal title" color="info" size="lg" :show.sync="infoModal">
+          <TheCreateEditAccount/>
+          <div slot="footer" class="w-100 d-none">
+          </div>
         </CModal>
         <CDataTable :items="dataAccounts" :fields="account" :items-per-page="5" hover pagination>
           <template #BlogStatus="{ item }">
@@ -45,6 +42,7 @@
 import axios from 'axios';
 import {freeSet} from '@coreui/icons';
 import swal from "sweetalert2";
+import TheCreateEditAccount from "./TheCreateEditAccount";
 
 const accountItem = [
   { key: "BlogID", label: "ID", _style: "min-width:100px" },
@@ -66,6 +64,9 @@ export default {
       type:Array,
       default:()=>[]
     }
+  },
+  components:{
+    TheCreateEditAccount
   },
   data(){
     return{
